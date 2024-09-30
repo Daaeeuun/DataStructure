@@ -9,7 +9,7 @@ class Stack:
     def pop(self):
         if not self.isEmpty():
             return self.top.pop(-1)
-    def peek(self):
+    def peek(self): #맨 위의 항목 삭제하지 않고 반환
         if not self.isEmpty():
             return self.top[-1]
     def size(self): return len(self.top)

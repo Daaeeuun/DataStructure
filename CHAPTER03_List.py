@@ -91,3 +91,60 @@ class ArrayList:
         self.items.extend(lst)
     def display(self, msg='ArrayList: '):
         print(msg, self.size(), self.items)
+
+#3.6 집합의 구현
+class Set:
+    def __init__(self):
+        self.items = []
+    def size(self):
+        return len(self.items)
+    def display(self, msg):
+        print(msg, self.items)
+    def contains(self, item):
+        return item in self.items #in아님 반복문으로 구현
+    def insert(self, elem):
+        if elem not in self.items:  #집합이라 중복이 없어야 삽입가능
+            self.items.append(elem)
+    def delete(self, elem):
+        if elem in self.items:
+            self.items.remove(elem)
+
+    def union(self, setB):
+        setC = Set()    #결과집합 생성
+        setC.items = list(self.items)
+        for elem in setB.items:
+            if elem not in self.items:
+                setC.items.append(elem)
+        return setC
+    def intersect(self, setB):
+        setC = Set()
+        for elem in setB.item:
+            if elem in self.items:
+                setC.items.append(elem)
+        return setC
+    def different(self, setB):
+        setC = Set()
+        for elem in self.items:
+            if elem not in setB.items:
+                setC.items.append(elem)
+        return setC
+
+#test
+setA = Set()
+setA.insert('휴대폰')
+setA.insert('지갑')
+setA.insert('손수건')
+setA.display('setA: ')
+
+setB = Set()
+setB.insert('빗')
+setB.insert('야구공')
+setB.insert('지갑')
+setB.display('setB: ')
+
+
+setB.insert('빗')
+setA.delete('손수건')
+setA.delete('발수건')
+setA.display('setA: ')
+setB.display('setB: ')
